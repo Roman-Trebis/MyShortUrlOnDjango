@@ -1,0 +1,2 @@
+# MyShortUrlOnDjango
+MyShortUrlOnDjango
