@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'main/main.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands-2/460/84_Dev_logo_logos-256.png">
+                <p>Сократитель Ваших ссылок!</p>
+            </div>
+            <div class="links">
+                <ul>
+                    <a href="{% url 'home' %}"><li>Главная</li></a>
+                    <a href="{% url 'about' %}"><li>О нас</li></a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}"><li>Личный кабинет пользователя</li></a>
+                    <a href="{% url 'links' %}"><li>Тот самый сократитель ссылок</li></a>
+                    {% else %}
+                    <a href="{% url 'user' %}"><li>Войти на сайт</li></a>
+                    <a href="{% url 'reg' %}"><li>Зарегистрироваться</li></a>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </header>
+    {% block main_section %}
+    {% endblock %}
+    <footer class="container">
+        <div><marquee>©My Test Site App 2023 - все права защищены</marquee></div>
+        <div class="social">
+            <div>Наши соц. сети:</div>
+            <a href="https://www.youtube.com/@itproger" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://vk.com/prog_life" target="_blank"><i class="fab fa-vk"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
